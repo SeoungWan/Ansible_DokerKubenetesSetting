@@ -1,0 +1,6 @@
+---
+- name: /etc/hosts 파일 설정 
+  copy:
+    src: files/hosts_kubernetes
+  # src: src: files/hosts_dockers
+    dest: /etc/hosts

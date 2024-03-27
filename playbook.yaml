@@ -3,6 +3,9 @@
   vars_files:
     - files/extension.list
   tasks:
+  - name: /etc/hosts 파일 설정 
+    ansible.builtin.include_tasks: tasks/hosts.yaml
+
   - name: SELinux 기능 설정 - permissive
     ansible.builtin.include_tasks: tasks/selinux.yaml
 
@@ -19,6 +22,8 @@
   - name: .vimrc 배포
     ansible.builtin.include_tasks: tasks/vimrc.yaml  
 
+
+  ## ZSH 설치는 최초 1회만 하고 추가 작업이 있을시 주석 추천 오래걸림
   - name: ZSH 설치
     ansible.builtin.include_tasks: tasks/zsh.yaml
   
