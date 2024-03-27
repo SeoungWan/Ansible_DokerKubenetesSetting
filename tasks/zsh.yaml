@@ -1,0 +1,6 @@
+---
+- name: 디렉토리 복사 - $HOME/.local/share/blesh/
+  copy:
+    src: files/blesh
+    dest: ~/.local/share/
+

@@ -1,0 +1,25 @@
+- name: 도커 과정 관리 플레이북
+  hosts: dockers
+  vars_files:
+    - files/extension.list
+  tasks:
+  - name: SELinux 기능 설정 - permissive
+    ansible.builtin.include_tasks: tasks/selinux.yaml
+
+  - name: 방화벽 내리기
+    ansible.builtin.include_tasks:
+      tasks/firewalld.yaml
+
+  - name: 확장 기능 설치 및 설정
+    ansible.builtin.include_tasks: tasks/extension.yaml
+
+  - name: PS1 변수 설정
+    ansible.builtin.include_tasks: tasks/ps1.yaml
+
+  - name: .vimrc 배포
+    ansible.builtin.include_tasks: tasks/vimrc.yaml  
+
+  - name: ZSH 설치
+    ansible.builtin.include_tasks: tasks/zsh.yaml
+  
+  

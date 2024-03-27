@@ -1,0 +1,6 @@
+- name: 방화벽 서비스 내리기 - firewalld
+  service:
+    name: firewalld
+    state: stopped
+    enabled: no
+

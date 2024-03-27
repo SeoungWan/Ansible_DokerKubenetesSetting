@@ -1,0 +1,5 @@
+---
+- name: .vimrc 배포
+  template:
+    src: template/.vimrc.j2
+    dest: ~/.vimrc

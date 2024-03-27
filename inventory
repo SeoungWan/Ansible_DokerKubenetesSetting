@@ -1,0 +1,6 @@
+[dockers]
+master
+node1
+node2
+node3
+minikube
