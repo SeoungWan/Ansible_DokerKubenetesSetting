@@ -5,9 +5,40 @@
     - gnome-extensions-app
     state: latest
 
-- name: GNOME2 확장 설정
-  ansible.builtin.command: 
-    cmd: "gnome-extensions enable {{ item }}"
-  with_items: "{{ extensions }}"
+# - name: GNOME2 확장 설정
+#   ansible.builtin.command: 
+#     cmd: "gnome-extensions enable {{ item }}"
+#   with_items: "{{ extensions }}"
+- name: extensions.sh 복사
+  copy:
+    src: files/extensions.sh
+    dest: ~/bin/
+    mode: '0755'
+
+- name: 바탕화면 아이콘 생성
+  copy:
+    src: "{{ item }}"
+    dest: ~/바탕화면/
+  with_items:
+    - "/usr/share/applications/org.gnome.Terminal.desktop"
+    - "/usr/share/applications/org.gnome.gedit.desktop"
+
+# 8) (node1/2/3) GUI -> TUI 환경경으로 전환
+- name: multi-user.target으로 전환 - default.target 삭제
+  file:
+    path: /etc/systemd/system/default.target
+    state: absent
+  when: (inventory_hostname == 'node1') or (inventory_hostname == 'node2') or (inventory_hostname == 'node3')
     
+- name: multi-user.target으로 전환 - default.target 링크 생성
+  file:
+    src: /usr/lib/systemd/system/multi-user.target
+    dest: /etc/systemd/system/default.target
+    state: link
+  when: gui == 'false'
+
+- name: multi-user.target으로 전환 - 현재 상태 변경
+  command: 
+    cmd: systemctl isolate multi-user.target
+  when: gui == 'false'
 

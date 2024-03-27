@@ -13,7 +13,7 @@
     ansible.builtin.include_tasks:
       tasks/firewalld.yaml
 
-  - name: 확장 기능 설치 및 설정
+  - name: gnome-extensions 확장 기능 설치 및 설정
     ansible.builtin.include_tasks: tasks/extension.yaml
 
   - name: PS1 변수 설정
@@ -24,7 +24,7 @@
 
 
   ## ZSH 설치는 최초 1회만 하고 추가 작업이 있을시 주석 추천 오래걸림
-  - name: ZSH 설치
-    ansible.builtin.include_tasks: tasks/zsh.yaml
+  # - name: ZSH 설치
+  #   ansible.builtin.include_tasks: tasks/zsh.yaml
   
   

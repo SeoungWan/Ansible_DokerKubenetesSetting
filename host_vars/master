@@ -1,2 +1,3 @@
 ps1_color: 31
 ssh_host: 192.168.10.10
+gui: true

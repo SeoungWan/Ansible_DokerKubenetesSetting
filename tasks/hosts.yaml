@@ -1,5 +1,5 @@
 ---
-- name: /etc/hosts 파일 설정 
+- name: /etc/hosts 파일 설정 배포 시작
   copy:
     src: files/hosts_kubernetes
   # src: src: files/hosts_dockers
