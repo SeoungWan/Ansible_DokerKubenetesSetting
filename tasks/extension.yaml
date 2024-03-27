@@ -23,22 +23,22 @@
     - "/usr/share/applications/org.gnome.Terminal.desktop"
     - "/usr/share/applications/org.gnome.gedit.desktop"
 
-# 8) (node1/2/3) GUI -> TUI 환경경으로 전환
-- name: multi-user.target으로 전환 - default.target 삭제
-  file:
-    path: /etc/systemd/system/default.target
-    state: absent
-  when: (inventory_hostname == 'node1') or (inventory_hostname == 'node2') or (inventory_hostname == 'node3')
+# # 8) (node1/2/3) GUI -> TUI 환경경으로 전환
+# - name: multi-user.target으로 전환 - default.target 삭제
+#   file:
+#     path: /etc/systemd/system/default.target
+#     state: absent
+#   when: (inventory_hostname == 'node1') or (inventory_hostname == 'node2') or (inventory_hostname == 'node3')
     
-- name: multi-user.target으로 전환 - default.target 링크 생성
-  file:
-    src: /usr/lib/systemd/system/multi-user.target
-    dest: /etc/systemd/system/default.target
-    state: link
-  when: gui == 'false'
+# - name: multi-user.target으로 전환 - default.target 링크 생성
+#   file:
+#     src: /usr/lib/systemd/system/multi-user.target
+#     dest: /etc/systemd/system/default.target
+#     state: link
+#   when: gui == 'false'
 
-- name: multi-user.target으로 전환 - 현재 상태 변경
-  command: 
-    cmd: systemctl isolate multi-user.target
-  when: gui == 'false'
+# - name: multi-user.target으로 전환 - 현재 상태 변경
+#   command: 
+#     cmd: systemctl isolate multi-user.target
+#   when: gui == 'false'
 
