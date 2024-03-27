@@ -1,6 +1,10 @@
-[dockers]
+[kubernetes]
 master
 node1
 node2
 node3
 minikube
+
+[dockers]
+docker1
+docker2

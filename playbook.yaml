@@ -1,5 +1,5 @@
 - name: 도커 과정 관리 플레이북
-  hosts: dockers
+  hosts: kubernetes
   vars_files:
     - files/extension.list
   tasks:
