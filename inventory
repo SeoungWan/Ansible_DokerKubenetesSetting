@@ -3,8 +3,10 @@ master
 node1
 node2
 node3
+
+[minikube]
 minikube
 
-[dockers]
-docker1
-docker2
+#[dockers]
+#docker1
+#docker2

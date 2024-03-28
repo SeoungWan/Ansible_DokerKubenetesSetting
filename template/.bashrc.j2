@@ -63,6 +63,11 @@ alias ansfs='ansible localhost -m setup | grep "ansible_*"'
 #
 export PS1='\[\e[{{ ps1_color }};1m\][\u@\h\[\e[33;1m\] \w]\$ \[\e[m\]'
 
+#
+# Kubectl 자동 완성
+#
+source <(kubectl completion bash)
+
 ###### Must be last line #######################
 [[ ${BLE_VERSION-} ]] && ble-attach
 ################################################
